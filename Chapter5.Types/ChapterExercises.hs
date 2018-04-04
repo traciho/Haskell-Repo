@@ -98,3 +98,69 @@ to fix this we first need to put
   c = 5
 now that c has a value we can apply it to b with an operator then b
 then b can then be applied to 12
+
+
+Type variable or specific type constructor?
+
+1. You will be shown a type declaration and you should categorize each type.
+the choices are fully polymorphic type variable,
+
+f :: Num a => a -> b -> Int -> Int
+              [0]  [1]  [2]    [3]
+here this answer would be: constrained polymorphic (Num) ([0])
+fully polymorphic ([1]) and concrete ([2]) and ([3])
+
+2. categorize each component of the type signature as descirbed
+in the previous example
+
+f :: zed -> Zed -> Blah
+      [0]   [1]     [2]
+fully polymorphic([0]) , concrete ([1],[2])
+
+3. Categorize each component of the type signature
+f :: Enum b => a -> b -> c
+               [0] [1]  [2]
+
+constrained polymorphic to Enum [0] [2]concrete
+[1] fully polymorphic
+
+4. Categorize each component of the type signature
+f :: f -> g -> c
+    [0]  [1]  [2]
+[0],[1] fully polymorphic
+[2] concrete
+
+
+Write a type signature
+
+For the following expressions, please add a type signature
+You should be able to rely on GHCi type inference to check your
+work, alothough you might not have precisely the same answer as
+GHCi gives (due to polymorphism etc.)
+
+
+1. While we haven't fully explained this syntax yet you've seen it in
+chapter 2, and as a solution to an exercise in Chapter 4
+This syntax is a way of destructing a single element of a list by
+pattern matching
+
+given
+functionN :: (x:_) = x
+
+type signature
+functionN :: [a] -> a
+
+2.
+given
+functionC x y =
+    if (x > y) then True else False
+
+type signature
+functionC :: (Ord a, Ord b) => a -> b -> Bool
+
+3.
+given
+functionS (x , y) = y
+
+type signature
+functionS :: (a, b) -> b
