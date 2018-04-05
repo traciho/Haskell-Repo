@@ -1,6 +1,6 @@
 data Trivial =
   Trivial'
 
-instnace Eq trivial
+instance Eq Trivial
   where
     Trivial' == Trivial' = True
