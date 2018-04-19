@@ -103,10 +103,10 @@ data Papu =
   deriving (Eq, Show)
 
 --1.
-phew = Papu "chases" True
+-- phew = Papu "chases" True
 
--- this works because Papu expects Rocks = String
--- and True = Bool
+-- this  does not work to make this work it.
+phew = Papu (Rocks"chases") (Yeah True)
 
 --2.
 truth = Papu (Rocks "chomskudoz")

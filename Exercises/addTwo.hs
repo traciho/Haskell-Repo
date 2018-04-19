@@ -14,11 +14,9 @@ main :: IO ()
 main = do -- do this IO instruction -- in order
       putStrLn "Please enter 2 numbers seperated by a space"
       x <- getTwoNumbers
-        -- case x of
-        --   Nothing <-
-        --     main
-        --     Just <-
-        --     (a, b)
+        (case x of
+            Nothing -> main
+            Just -> (a, b))
       putStrLn "Your sum is"
       print (a + b)
       -- rewrite the code to go from x to (a,b)
@@ -34,8 +32,10 @@ getTwoNumbers = do
     pure $ readInts line
 
 readInts :: String -> Maybe (Int, Int)
-readInts a b = Just (a,b)
-    where ( , ) = error "error" 
+readInts line = (a, b)
+
+
+
 
 
 
@@ -43,8 +43,8 @@ readInts a b = Just (a,b)
 --number space number return just number 1 number 2 anything else is nothing
 -- reading about strings and maybe
 
-
--- data Maybe x = Nothing | Just x
+--
+data Maybe x = Nothing | Just x
 --
 -- Maybe Int
 -- Maybe String
