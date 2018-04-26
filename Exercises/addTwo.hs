@@ -1,6 +1,8 @@
 module Main where
 
 
+data MyMaybe x = MyNothing | MyJust x deriving (Show)
+
 addMe:: (Int, Int)-> Int
 addMe (x, y) =
        x + y
@@ -14,11 +16,11 @@ main :: IO ()
 main = do -- do this IO instruction -- in order
       putStrLn "Please enter 2 numbers seperated by a space"
       x <- getTwoNumbers
-        (case x of
-            Nothing -> main
-            Just -> (a, b))
+        -- case x of
+        --   Nothing -> main
+        --   Just -> (a, b)
       putStrLn "Your sum is"
-      print (a + b)
+      -- print (a + b)
       -- rewrite the code to go from x to (a,b)
       -- x :: Maybe (Int, Int)
       -- (a, b) :: (Int, Int)
@@ -26,13 +28,32 @@ main = do -- do this IO instruction -- in order
 
 -- putStrLn :: String -> IO () -- IO instruction / action / recipe
 -- getLine :: IO String -- an instruction that results in a string -- a recipe for a string
-getTwoNumbers :: IO (Maybe (Int, Int))
+getTwoNumbers :: IO (MyMaybe (Int, Int))
 getTwoNumbers = do
     line <- getLine
     pure $ readInts line
+-- -- line expects an Int Int
+readInts :: String -> MyMaybe (Int, Int)
+readInts [x] = (MyJust (x, x))
+readInts []  = MyNothing
 
-readInts :: String -> Maybe (Int, Int)
-readInts line = (a, b)
+
+
+
+-- readInts ([x])  = Just (y, y)
+-- -- :: (Maybe (Int ,Int))
+-- readInts ([x]) = Nothing
+-- readInts x
+--   | isTwo x = Just $ line x
+--   | otherwise = Nothing
+--   where isTwo = readInts x
+-- readInts (x,_) = Nothing
+-- readInts (x,y)= (Just (y,y))
+-- readInts [x] = Nothing
+-- readInts [x y] = Nothing
+-- readInts [a] = maybe x y
+-- -- readInts (x:[]) = Nothing
+-- readInts [xs] = Nothing
 
 
 
@@ -43,8 +64,7 @@ readInts line = (a, b)
 --number space number return just number 1 number 2 anything else is nothing
 -- reading about strings and maybe
 
---
-data Maybe x = Nothing | Just x
+
 --
 -- Maybe Int
 -- Maybe String
