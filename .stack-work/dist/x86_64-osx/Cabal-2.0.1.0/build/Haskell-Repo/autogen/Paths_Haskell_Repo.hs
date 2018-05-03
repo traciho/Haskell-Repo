@@ -30,7 +30,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/bin"
-libdir     = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/lib/x86_64-osx-ghc-8.2.2/Haskell-Repo-0.1.0.0-FyD24aO1mHk2suEWoA24L1-Haskell-Repo"
+libdir     = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/lib/x86_64-osx-ghc-8.2.2/Haskell-Repo-0.1.0.0-GvFbS8It4UuAGobhdTeAVm-Haskell-Repo"
 dynlibdir  = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/lib/x86_64-osx-ghc-8.2.2"
 datadir    = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/share/x86_64-osx-ghc-8.2.2/Haskell-Repo-0.1.0.0"
 libexecdir = "/Users/traaaaaci/Desktop/Haskell-Repo/.stack-work/install/x86_64-osx/lts-11.3/8.2.2/libexec/x86_64-osx-ghc-8.2.2/Haskell-Repo-0.1.0.0"

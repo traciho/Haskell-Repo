@@ -1,7 +1,10 @@
 module Main where
 
+import Text.Read (readMaybe)
+import Data.Maybe (catMaybes)
+import Data.List (unzip)
 
-data MyMaybe x = MyNothing | MyJust x deriving (Show)
+-- data MyMaybe x = MyNothing | MyJust x deriving (Show)
 
 addMe:: (Int, Int)-> Int
 addMe (x, y) =
@@ -15,10 +18,10 @@ sayHello = do
 main :: IO ()
 main = do -- do this IO instruction -- in order
       putStrLn "Please enter 2 numbers seperated by a space"
-      x <- getTwoNumbers
-        -- case x of
-        --   Nothing -> main
-        --   Just -> (a, b)
+      -- x <- getTwoNumbers
+      --   case x of
+      --     Nothing -> main
+      --     Just -> (a, b)
       putStrLn "Your sum is"
       -- print (a + b)
       -- rewrite the code to go from x to (a,b)
@@ -28,16 +31,35 @@ main = do -- do this IO instruction -- in order
 
 -- putStrLn :: String -> IO () -- IO instruction / action / recipe
 -- getLine :: IO String -- an instruction that results in a string -- a recipe for a string
-getTwoNumbers :: IO (MyMaybe (Int, Int))
+
+getTwoNumbers :: IO (Maybe (Int, Int))
 getTwoNumbers = do
     line <- getLine
     pure $ readInts line
 -- -- line expects an Int Int
-readInts :: String -> MyMaybe (Int, Int)
-readInts [x] = (MyJust (x, x))
-readInts []  = MyNothing
+readInts :: String -> Maybe (Int, Int)
+readInts list =
+    case words list of
+      [x, y] -> Just (readMaybe x, readMaybe y $ readInts )
+      _ -> Nothing
+
+-- case words list of
+--   [x, y] -> readMaybe x readMaybe y :: Maybe (Int, Int)
+--   _ -> Nothing
+
+--
+-- case words list of
+-- [x, y] ->  catMaybes $ fmap readMaybe x y
+-- _ -> Nothing
+--
 
 
+-- case expression of pattern -> result
+--                    pattern -> result
+
+-- split (condense $ startsWithOneOf " ")
+-- readInts [x] = (MyJust (x, x))
+-- readInts []  = MyNothing
 
 
 -- readInts ([x])  = Just (y, y)
@@ -50,7 +72,8 @@ readInts []  = MyNothing
 -- readInts (x,_) = Nothing
 -- readInts (x,y)= (Just (y,y))
 -- readInts [x] = Nothing
--- readInts [x y] = Nothing
+-- readInts [  = do the result
+-- readInts _ = Nothing
 -- readInts [a] = maybe x y
 -- -- readInts (x:[]) = Nothing
 -- readInts [xs] = Nothing
