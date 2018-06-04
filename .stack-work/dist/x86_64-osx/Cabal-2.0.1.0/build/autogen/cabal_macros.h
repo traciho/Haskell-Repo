@@ -22,6 +22,28 @@
   (major1) == 4 && (major2) == 10 && (minor) <= 1)
 #endif /* MIN_VERSION_base */
 
+/* package containers-0.5.10.2 */
+#ifndef VERSION_containers
+#define VERSION_containers "0.5.10.2"
+#endif /* VERSION_containers */
+#ifndef MIN_VERSION_containers
+#define MIN_VERSION_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  5 || \
+  (major1) == 0 && (major2) == 5 && (minor) <= 10)
+#endif /* MIN_VERSION_containers */
+
+/* package filepath-1.4.1.2 */
+#ifndef VERSION_filepath
+#define VERSION_filepath "1.4.1.2"
+#endif /* VERSION_filepath */
+#ifndef MIN_VERSION_filepath
+#define MIN_VERSION_filepath(major1,major2,minor) (\
+  (major1) <  1 || \
+  (major1) == 1 && (major2) <  4 || \
+  (major1) == 1 && (major2) == 4 && (minor) <= 1)
+#endif /* MIN_VERSION_filepath */
+
 /* package text-1.2.3.0 */
 #ifndef VERSION_text
 #define VERSION_text "1.2.3.0"
@@ -143,8 +165,11 @@
   (major1) == 8 && (major2) == 2 && (minor) <= 2)
 #endif /* MIN_TOOL_VERSION_runghc */
 
+#ifndef CURRENT_PACKAGE_KEY
+#define CURRENT_PACKAGE_KEY "Haskell-Repo-0.1.0.0-5i7hleAVi7M2fgpIOVPIEt"
+#endif /* CURRENT_PACKAGE_KEY */
 #ifndef CURRENT_COMPONENT_ID
-#define CURRENT_COMPONENT_ID "Haskell-Repo-0.1.0.0-Fzg7qRuwqlKBJbPg7Lz08-Haskell-Repo"
+#define CURRENT_COMPONENT_ID "Haskell-Repo-0.1.0.0-5i7hleAVi7M2fgpIOVPIEt"
 #endif /* CURRENT_COMPONENT_ID */
 #ifndef CURRENT_PACKAGE_VERSION
 #define CURRENT_PACKAGE_VERSION "0.1.0.0"

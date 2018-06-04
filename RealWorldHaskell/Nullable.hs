@@ -1,5 +1,10 @@
 module Main where
-  
+
+import Prelude hiding (Maybe (..))
+
+main :: IO ()
+main = print "hello"
+
 data Maybe a = Just a
              | Nothing
 
@@ -10,3 +15,6 @@ data Maybe a = Just a
 someBool = Just True
 
 someString = Just "something"
+
+
+wrapped = Just (Just "wrapped")

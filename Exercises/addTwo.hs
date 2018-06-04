@@ -1,14 +1,13 @@
 module Main where
 
 import Text.Read (readMaybe)
-import Data.Maybe (catMaybes)
+import Data.Maybe (mapMaybe)
 import Data.List (unzip)
+import Prelude hiding (Maybe (..))
 
--- data MyMaybe x = MyNothing | MyJust x deriving (Show)
 
-addMe:: (Int, Int)-> Int
-addMe (x, y) =
-       x + y
+data Maybe a = Nothing
+             | Just a deriving (Show)
 
 sayHello :: IO ()
 sayHello = do
@@ -18,16 +17,10 @@ sayHello = do
 main :: IO ()
 main = do -- do this IO instruction -- in order
       putStrLn "Please enter 2 numbers seperated by a space"
-      -- x <- getTwoNumbers
-      --   case x of
-      --     Nothing -> main
-      --     Just -> (a, b)
-      putStrLn "Your sum is"
-      -- print (a + b)
-      -- rewrite the code to go from x to (a,b)
-      -- x :: Maybe (Int, Int)
-      -- (a, b) :: (Int, Int)
-      -- and repeat main if you can't
+      x <- getTwoNumbers
+      case x of
+        Nothing -> main
+        Just (a,b) -> print (a + b)
 
 -- putStrLn :: String -> IO () -- IO instruction / action / recipe
 -- getLine :: IO String -- an instruction that results in a string -- a recipe for a string
@@ -36,18 +29,23 @@ getTwoNumbers :: IO (Maybe (Int, Int))
 getTwoNumbers = do
     line <- getLine
     pure $ readInts line
--- -- line expects an Int Int
-readInts :: String -> Maybe (Int, Int)
-readInts list =
-    case words list of
-      [x, y] -> Just (readMaybe x, readMaybe y $ readInts )
-      _ -> Nothing
+  where
+    readInts :: String -> Maybe (Int, Int)
+    readInts list =
+        takeTwo (splitInt list)
 
--- case words list of
---   [x, y] -> readMaybe x readMaybe y :: Maybe (Int, Int)
---   _ -> Nothing
+    splitInt :: String -> [Int]
+    splitInt list =
+        mapMaybe readMaybe (words list)
 
---
+    takeTwo :: [a] -> Maybe (a, a)
+    takeTwo list =
+        case list of
+          [x, y] -> Just (x, y)
+          _ -> Nothing
+
+
+
 -- case words list of
 -- [x, y] ->  catMaybes $ fmap readMaybe x y
 -- _ -> Nothing
@@ -56,11 +54,6 @@ readInts list =
 
 -- case expression of pattern -> result
 --                    pattern -> result
-
--- split (condense $ startsWithOneOf " ")
--- readInts [x] = (MyJust (x, x))
--- readInts []  = MyNothing
-
 
 -- readInts ([x])  = Just (y, y)
 -- -- :: (Maybe (Int ,Int))
@@ -77,11 +70,6 @@ readInts list =
 -- readInts [a] = maybe x y
 -- -- readInts (x:[]) = Nothing
 -- readInts [xs] = Nothing
-
-
-
-
-
 
  -- replace it with something that works
 --number space number return just number 1 number 2 anything else is nothing
